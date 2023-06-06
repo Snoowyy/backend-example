@@ -1,0 +1,9 @@
+# Levantamiento del proyectp
+## Requisitos del sistema
+* Node JS (https://nodejs.org/en) LTS
+* MAMP (https://www.mamp.info/en/downloads/) para Macs
+## Pasos de inicio
+* Ejecutar la instruccion "npm i" para instalar los paquetes necesarios (express, mysql)
+* Ejecutar la instruccion en la consola "node ." para que se levante el servidor
+
+

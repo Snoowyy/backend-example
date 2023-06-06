@@ -1,0 +1,7 @@
+# Levantamiento del proyectp
+## Requisitos del sistema
+* Python Version >= 3.8 (https://www.python.org/downloads/) LTS
+* MAMP (https://www.mamp.info/en/downloads/) para Macs
+## Pasos de inicio
+* Ejecutar la instruccion "pip install flask-mysqldb" para instalar el paquete necesario para nuestro servidor
+* Ejecutar la instruccion en la consola "python server.py" para que se levante el servidor
