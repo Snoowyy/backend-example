@@ -1,18 +1,30 @@
+require('dotenv').config();
 const express = require("express");
-var db_connection = require("./helpers/db_connection");
 const app = express();
+// Set routes to express
+// parse requests of content-type - application/json
+app.use(express.json());
 
-app.get("/", function (req, res) {
-  try {
-    db_connection.query("SELECT * FROM wp_users ORDER BY id desc", function (err, rows) {
-      if (err) {
-        res.status(400).send({ status: 'Error', data: err});
-      }
-      res.status(200).send({ status: 'Success', data: rows});
-    });
-  } catch (error) {
-    res.status(400).send({ status: 'Error', data: error});
-  }
+// parse requests of content-type - application/x-www-form-urlencoded
+app.use(express.urlencoded({ extended: true }));
+
+const db = require("./models");
+db.sequelize.sync()
+.then(() => {
+  console.log("Synced db.");
+})
+.catch((err) => {
+  console.log("Failed to sync db: " + err.message);
 });
 
-app.listen(3000);
+// simple route
+app.get("/", (req, res) => {
+  res.json(`API running on port ${process.env.PORT || 3000}` );
+});
+
+require("./routes/client.routes")(app);
+// set port, listen for requests
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}.`);
+});
