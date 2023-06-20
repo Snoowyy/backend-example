@@ -7,7 +7,7 @@ module.exports = (sequelize_connection, Sequelize) => {
         type: Sequelize.STRING
       },
       telephone: {
-        type: Sequelize.BOOLEAN
+        type: Sequelize.STRING
       }
     });
 
